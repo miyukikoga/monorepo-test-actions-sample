@@ -1,0 +1,19 @@
+{
+  "name": "c",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"test c\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miyukikoga/monorepo-test-actions-sample.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/miyukikoga/monorepo-test-actions-sample/issues"
+  },
+  "homepage": "https://github.com/miyukikoga/monorepo-test-actions-sample#readme"
+}

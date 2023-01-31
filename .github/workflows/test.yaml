@@ -1,0 +1,33 @@
+name: Monorepo Test Actions Sample
+
+on: [pull_request]
+
+jobs:
+  get-changed-workspaces:
+    runs-on: ubuntu-latest
+    outputs:
+      packages: ${{ steps.changed-packages.outputs.packages }}
+      empty: ${{ steps.changed-packages.outputs.empty }}
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Find changed workspaces
+        uses: AlexShukel/get-changed-workspaces-action@v2.0.0
+        id: changed-packages
+
+  test-jest:
+    name: Test with Jest
+    # get-changed-workspaces が正常に完了した時、このジョブは実行されます
+    needs: [get-changed-workspaces]
+    # workspace に変更がなければこのジョブをスキップします
+    if: ${{ !fromJson(needs.get-changed-workspaces.outputs.empty) }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # 変更された packages をマトリックスに渡す
+        package: ${{ fromJson(needs.get-changed-workspaces.outputs.packages) }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Test
+        run: npm run test
+        working-directory: ${{ matrix.package.path }}
