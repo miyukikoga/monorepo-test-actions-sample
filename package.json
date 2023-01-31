@@ -1,0 +1,25 @@
+{
+  "name": "monorepo-test-actions-sample",
+  "version": "1.0.0",
+  "description": "モノレポで GitHub Actions を使って自動テストするサンプル",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miyukikoga/monorepo-test-actions-sample.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/miyukikoga/monorepo-test-actions-sample/issues"
+  },
+  "homepage": "https://github.com/miyukikoga/monorepo-test-actions-sample#readme",
+  "private": true,
+  "workspaces": [
+    "packages/C",
+    "packages/A",
+    "packages/B"
+  ]
+}
